@@ -106,7 +106,7 @@ const valid = sum - mod == 6;
 # 5. Functions are values
 Change a function behaviour with a value throught currying, that is, functions that return functions.
 
-```javascript
+```js
 const makeListener = postId => () => alert(postId);
 
 postButton.onclick = makeListener(postButton.id);
@@ -114,7 +114,7 @@ postButton.onclick = makeListener(postButton.id);
 
 Define algebraic functions throught high-order, that is, functions that take functions as parameters. This allows powerfull abstractions.
 
-```javascript
+```js
 const work = howShouldIMapTheObject => ({
   timestamp,
   data: howShouldIMapTheObject(object)
@@ -184,7 +184,7 @@ Use them with typeclasses - traits - interfaces to group types and apply generic
 
 In javascript, _this_ is obscure. Prefer lambdas.
 
-```javascript
+```js
 el.onclick = ev => {
   console.log(ev.currentTarget)
 };

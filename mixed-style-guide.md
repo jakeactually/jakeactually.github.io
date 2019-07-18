@@ -38,13 +38,13 @@ Html
 
 Simple text
 
-```javascript
+```js
 const string = 'www.example.com';
 ```
 
 Interpolation
 
-```javascript
+```js
 const string = `${variable}`;
 ```
 

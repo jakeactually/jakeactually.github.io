@@ -11,7 +11,7 @@ A language should have methods. Methods are just functions that take the data as
 length list
 ```
 
-```C#
+```cs
 // C#
 list.Count()
 ```
@@ -34,7 +34,7 @@ Function composition is parallel to chaining
 f = reverse . take 10 . drop 10
 ```
 
-```C#
+```cs
 // C#
 list.Drop(10).Take(10).Reverse();
 ```
@@ -98,7 +98,7 @@ case animal of
 
 Interfaces are also a form of branching. Consider this C#
 
-```C#
+```cs
 interface IDrawable { void Draw(); }
 
 class Circle : IDrawable { void Draw() {} }
@@ -107,7 +107,7 @@ class Rectangle : IDrawable { void Draw() {} }
 
 It can be said that IDrawable is a union type, and it can be a Circle or a Rectangle. Then consider this function
 
-```C#
+```cs
 void Render(IDrawable drawable) {
   drawable.Draw();
 }
