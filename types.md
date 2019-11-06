@@ -2,7 +2,7 @@
 
 # unions
 
-a "type A union B" (A | B) is a type that can be A or B
+a "type A union B" (A \| B) is a type that can be A or B
 
 typescript encodes unions very formally
 
