@@ -27,11 +27,11 @@ impl Point {
 }
 ```
 
-Function composition is parallel to chaining
+Piping is chaining, so a language shouldn't have both.
 
-```haskell
--- haskell
-f = reverse . take 10 . drop 10
+```fs
+// F#
+list |> List.skip 10 |> List.take 10 |> List.rev
 ```
 
 ```cs
@@ -42,6 +42,8 @@ list.Drop(10).Take(10).Reverse();
 But methods have the advantage of having autocomplete. There's no autocomplete without methods. Formally speaking, autocomplete is achieved when the data is written first so its type, thus its properties, can be inferred.
 
 ![intellisense](https://code.visualstudio.com/assets/docs/editor/intellisense/intellisense.gif)
+
+A counter argument to methods is that functions (like haskell ones) allow removing all type signatures. However I prefer autocompletion.
 
 # Types
 
@@ -69,56 +71,6 @@ BufferedReader br = new BufferedReader(
 );
 ```
 
-# Switch
-
-Most code is
-- selecting a branch
-- perform the action of the branch
-
-This can be encoded as unions and interfaces. In fact, unions and interfaces are fancy switches.
-
-# Unions
-
-Consider this haskell
-
-```haskell
-data Animal = Dog | Cat | Bird Int
-```
-
-This means that a Animal can be a Dog, a Cat or a Bird. Branching can be performed on this data.
-
-```haskell
-case animal of
-  Dog -> print "woof!"
-  Cat -> print "meow!"
-  Bird height -> print ("flying at " ++ show height ++ " meters")
-```
-
-# Interfaces
-
-Interfaces are also a form of branching. Consider this C#
-
-```cs
-interface IDrawable { void Draw(); }
-
-class Circle : IDrawable { void Draw() {} }
-class Rectangle : IDrawable { void Draw() {} }
-```
-
-It can be said that IDrawable is a union type, and it can be a Circle or a Rectangle. Then consider this function
-
-```cs
-void Render(IDrawable drawable) {
-  drawable.Draw();
-}
-```
-
-Here, the interface chooses (branches) which version of the draw method is going to use, if the one of Rectangle or the one of Circle.
-
-# Unions and interfaces
-
-A language should have both unions and interfaces. Unions leave the control flow explicit and are useful in the short range. Interfaces leave the control flow implicit and are useful in the long range.
-
 # Pattern Matching
 
 Pattern matching consists of 5 things
@@ -138,7 +90,21 @@ case point of
   _ -> 0 -- default
 ```
 
-Every language can do this, but some, like haskell, have first class syntax for it. This results in a powerful control flow tool.
+Destructuring is really important in functional languages, but not so quite in object oriented ones
+where structure is easily accessed.
+
+```cs
+switch (animal) {
+  case Dog d:
+    return d.bark;
+  case Cat c:
+    return c.meow;
+}
+```
+
+"Control flow as expressions" turns out useful even in object oriented languages. Above, it would helped remove the return keyword. Control flow as expressions help making [pure functions](https://en.wikipedia.org/wiki/Pure_function).
+
+Pattern matching is mainly useful for handling [unions](https://jakeactually.github.io/types).
 
 # Generics
 
@@ -171,10 +137,6 @@ Some languages make generics easy to write by inferring them.
 val list = List("a", "b", "c")
 list(0) // Guaranteed to be string
 ```
-
-# Implicit
-
-Languages should be implicit. Languages should not be understood by everyone, but by persons that study that language. And languages should empower writers (programmers) not give them burden.
 
 # Garbage collection
 
