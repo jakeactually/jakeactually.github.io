@@ -1,5 +1,3 @@
-[Types](/types)
-
 [Thoughts on languages](/thoughts-on-languages)
 
 [Js quirks](/js-quirks)
