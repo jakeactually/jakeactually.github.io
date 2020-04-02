@@ -1,3 +1,5 @@
+[Callback concurrency](/callback-concurrency)
+
 [Thoughts on languages](/thoughts-on-languages)
 
 [Js quirks](/js-quirks)
